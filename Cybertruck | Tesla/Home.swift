@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  Home.swift
 //  Cybertruck | Tesla
 //
 //  Created by constantine kos on 03.03.2020.
@@ -22,33 +22,7 @@ struct Home: View {
                 
                 Spacer()
                 
-                VStack(spacing: 26) {
-                    Text("A/C is turned on")
-                        .foregroundColor(Color(#colorLiteral(red: 0.4980392157, green: 0.5176470588, blue: 0.537254902, alpha: 1)))
-                    
-                    ZStack {
-                        LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), Color(#colorLiteral(red: 0, green: 0.368627451, blue: 0.6392156863, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                            .frame(width: 136, height: 136)
-                            .blur(radius: 12)
-                        
-                        LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0, green: 0.368627451, blue: 0.6392156863, alpha: 1)), Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                            .frame(width: 128, height: 128)
-                            .clipShape(Circle())
-                        
-                        Image(systemName: "lock")
-                            .resizable()
-                            .frame(width: 20, height: 26)
-                            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                        
-                    }
-                    .clipShape(Circle())
-                    .shadow(color: Color(#colorLiteral(red: 0.1215686275, green: 0.1411764706, blue: 0.1529411765, alpha: 1)), radius: 10, x: 10, y: 10)
-                    .shadow(color: Color(#colorLiteral(red: 0.1843137255, green: 0.2235294118, blue: 0.2392156863, alpha: 1)), radius: 10, x: -10, y: -10)
-                    
-                    
-                    Text("Tap to open the car")
-                        .foregroundColor(Color.white)
-                }
+                OpenCarSection()
             }
             GeometryReader { g in
                 HStack {
@@ -119,6 +93,39 @@ struct CarInfoSection: View {
             .frame(height: 200)
             .padding(.top, 18.0)
             .foregroundColor(.white)
+        }
+    }
+}
+
+struct OpenCarSection: View {
+    var body: some View {
+        VStack(spacing: 26) {
+            Text("A/C is turned on")
+                .foregroundColor(Color(#colorLiteral(red: 0.4980392157, green: 0.5176470588, blue: 0.537254902, alpha: 1)))
+            
+            NavigationLink(destination: MainView()) {
+                ZStack {
+                    LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), Color(#colorLiteral(red: 0, green: 0.368627451, blue: 0.6392156863, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .frame(width: 136, height: 136)
+                        .blur(radius: 12)
+                    
+                    LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0, green: 0.368627451, blue: 0.6392156863, alpha: 1)), Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .frame(width: 128, height: 128)
+                        .clipShape(Circle())
+                    
+                    Image(systemName: "lock")
+                        .resizable()
+                        .frame(width: 20, height: 26)
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    
+                }
+                .clipShape(Circle())
+                .shadow(color: Color(#colorLiteral(red: 0.1215686275, green: 0.1411764706, blue: 0.1529411765, alpha: 1)), radius: 10, x: 10, y: 10)
+                .shadow(color: Color(#colorLiteral(red: 0.1843137255, green: 0.2235294118, blue: 0.2392156863, alpha: 1)), radius: 10, x: -10, y: -10)
+            }
+            
+            Text("Tap to open the car")
+                .foregroundColor(Color.white)
         }
     }
 }
