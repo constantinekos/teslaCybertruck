@@ -10,30 +10,35 @@ import SwiftUI
 
 struct Home: View {
     var body: some View {
-        ZStack {
-            
-            LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                SettingsButton()
+        NavigationView() {
+            ZStack {
+
+                //background gradient
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
                 
-                CarInfoSection()
-                
-                Spacer()
-                
-                OpenCarSection()
-            }
-            GeometryReader { g in
-                HStack {
+                VStack {
+                    SettingsButton()
+                    
+                    CarInfoSection()
+                    
                     Spacer()
-                    Image("teslaCybertruckCutted")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: g.size.width - 40, height: 300)
-                        .offset(y: 40)
+                    
+                    OpenCarSection()
+                }
+                GeometryReader { g in
+                    HStack {
+                        Spacer()
+                        Image("teslaCybertruckCutted")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: g.size.width - 40, height: 300)
+                            .offset(y: 40)
+                    }
                 }
             }
+            .navigationBarTitle(Text("Home"))
+            .navigationBarHidden(true)
         }
     }
 }
