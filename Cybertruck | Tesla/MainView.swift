@@ -24,7 +24,7 @@ struct MainView: View {
                 //                        .frame( height: 300)
                 
                 StatusSection()
-                
+
                 HStack {
                     Text("Information")
                     .font(.title)
@@ -32,13 +32,7 @@ struct MainView: View {
                         .foregroundColor(.white)
                     Spacer()
                 }.padding()
-                    
-                
-                
-                
-                
-                
-                
+
                 Spacer()
             }
         }
