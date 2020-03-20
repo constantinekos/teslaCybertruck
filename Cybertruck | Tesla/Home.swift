@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Home: View {
     @State private var showMainView = false
+    @State private var showSettings = false
     
     var body: some View {
         
@@ -21,8 +22,7 @@ struct Home: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    SettingsButton()
-                        .offset(y: showMainView ? 10 : 0)
+                    SettingsButton(showSettings: $showSettings)
                     
                     CarInfoSection()
                     
@@ -31,16 +31,16 @@ struct Home: View {
                     OpenCarSection(showMainView: $showMainView)
                     
                 }
-                GeometryReader { g in
+                //GeometryReader { g in
                     HStack {
                         Spacer()
                         Image("teslaCybertruckCutted")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: g.size.width - 40, height: 300)
-                            .offset(y: 40)
+                            .frame(height: 220)
+                            .offset(y: 60)
                     }
-                }
+                //}
             }
         }
     }
@@ -53,28 +53,39 @@ struct Home_Previews: PreviewProvider {
 }
 
 struct SettingsButton: View {
+    @Binding var showSettings : Bool
+    
     var body: some View {
         HStack {
             Spacer()
             
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1)), Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .frame(width: 69, height: 69)
-                    .clipShape(Circle())
-                    .blur(radius: 8)
-                
-                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .frame(width: 63, height: 63)
-                    .clipShape(Circle())
-                
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: 26, height: 26)
-                    .foregroundColor(Color(#colorLiteral(red: 0.4980392157, green: 0.5176470588, blue: 0.537254902, alpha: 1)))
-                
+            Button(action: {
+                self.showSettings.toggle()
+            }) {
+                ZStack {
+                    LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1)), Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .frame(width: 69, height: 69)
+                        .clipShape(Circle())
+                        .blur(radius: 8)
+                    
+                    LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .frame(width: 63, height: 63)
+                        .clipShape(Circle())
+                    
+                    Image(systemName: "gear")
+                        .resizable()
+                        .frame(width: 26, height: 26)
+                        .foregroundColor(Color(#colorLiteral(red: 0.4980392157, green: 0.5176470588, blue: 0.537254902, alpha: 1)))
+                    
+                }
+                .clipShape(Circle())
+                .frame(width: 63, height: 63)
             }
-            .clipShape(Circle())
-            .frame(width: 63, height: 63)
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
+            }
+        
+            
             
             
         }.padding()
@@ -121,23 +132,23 @@ struct OpenCarSection: View {
             }) {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), Color(#colorLiteral(red: 0, green: 0.368627451, blue: 0.6392156863, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                        .frame(width: 136, height: 136)
-                        .blur(radius: 12)
+                        .frame(width: 100, height: 100)
+                        .blur(radius: 88)
                     
                     LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0, green: 0.368627451, blue: 0.6392156863, alpha: 1)), Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                        .frame(width: 128, height: 128)
+                        .frame(width: 100, height: 100)
                         .clipShape(Circle())
                     
                     Image(systemName: "lock")
                         .resizable()
-                        .frame(width: 20, height: 26)
+                        .frame(width: 22, height: 28)
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     
                 }
                 .clipShape(Circle())
                 .shadow(color: Color(#colorLiteral(red: 0.1215686275, green: 0.1411764706, blue: 0.1529411765, alpha: 1)), radius: 10, x: 10, y: 10)
                 .shadow(color: Color(#colorLiteral(red: 0.1843137255, green: 0.2235294118, blue: 0.2392156863, alpha: 1)), radius: 10, x: -10, y: -10)
-            }.animation(.spring())
+            }
             
             
             

@@ -19,20 +19,31 @@ struct MainView: View {
                 TopSection()
                 
                 Image("CybertruckMainView")
-                //                        .resizable()
-                //                        .aspectRatio(contentMode: .fit)
-                //                        .frame( height: 300)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame( height: 220)
                 
                 StatusSection()
-
+                
                 HStack {
                     Text("Information")
-                    .font(.title)
-                    .fontWeight(.bold)
+                        .font(.title)
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
-                }.padding()
-
+                }.padding([.leading, .top])
+                
+                //FUCK! I need to do this in another View
+                ScrollView(.horizontal) {
+                    VStack(alignment: .leading) {
+                       Text("Engine")
+                        Text("Sleeping Mode")
+                            //.size(width: 150, height: 150)
+                        
+                    }.padding(.leading)
+                }
+                
+                
                 Spacer()
             }
         }
