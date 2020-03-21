@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @State var home = false
+    
     var body: some View {
         ZStack {
             //Background
@@ -18,10 +20,10 @@ struct MainView: View {
             VStack {
                 TopSection()
                 
-                Image("CybertruckMainView")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame( height: 220)
+               Image("CybertruckMainView")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame( height: 220)
                 
                 StatusSection()
                 
@@ -36,11 +38,10 @@ struct MainView: View {
                 //FUCK! I need to do this in another View
                 ScrollView(.horizontal) {
                     VStack(alignment: .leading) {
-                       Text("Engine")
-                        Text("Sleeping Mode")
-                            //.size(width: 150, height: 150)
+                       InformationSection()
                         
-                    }.padding(.leading)
+                        
+                    }.padding(.all)
                 }
                 
                 
