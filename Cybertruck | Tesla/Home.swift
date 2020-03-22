@@ -84,10 +84,6 @@ struct SettingsButton: View {
             .sheet(isPresented: $showSettings) {
                 SettingsView()
             }
-        
-            
-            
-            
         }.padding()
             .shadow(color: Color(#colorLiteral(red: 0.1215686275, green: 0.1411764706, blue: 0.1529411765, alpha: 1)), radius: 7, x: 7, y: 7)
             .shadow(color: Color(#colorLiteral(red: 0.2823529412, green: 0.3137254902, blue: 0.3411764706, alpha: 1)), radius: 7, x: -7, y: -7)
