@@ -1,19 +1,19 @@
 //
-//  SettingsView.swift
+//  UserProfileView.swift
 //  Cybertruck | Tesla
 //
-//  Created by constantine kos on 20.03.2020.
+//  Created by constantine kos on 08.04.2020.
 //  Copyright © 2020 constantine kos. All rights reserved.
 //
 
 import SwiftUI
 
-struct SettingsView: View {
+struct UserProfileView: View {
     @State var guestEmail = ""
     @State var secretToken = ""
     @State var showToken = false
     
-    var body: some View { 
+    var body: some View {
         VStack(alignment: .center) {
             
             RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -81,8 +81,8 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
+struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        UserProfileView()
     }
 }

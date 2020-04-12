@@ -8,9 +8,15 @@
 
 import SwiftUI
 
+
+
+
 struct MainView: View {
     @State var home = false
     @State var showUser = false
+    @State var showClimate = false
+    
+    let cybertruckData: CybertruckData
     
     var body: some View {
         ZStack {
@@ -18,52 +24,68 @@ struct MainView: View {
             LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
-                TopSection(showUser: $showUser)
-                
-               Image("CybertruckMainView")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame( height: 220)
-                
-                StatusSection()
-                
-                HStack {
-                    Text("Information")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
+            ScrollView() {
+                VStack {
+                    //Header starts here
+                    TopSection(showUser: $showUser, showClimate: $showClimate)
+                    //Header ends here
+                    
+                    Image("CybertruckMainView")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame( height: 220)
+                    
+                    //Status bar starts here
+                    StatusSection(cybertruckData: CybertruckData())
+                    //Status bar ends here
+                    HStack {
+                        Text("Information")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        Spacer()
+                    }.padding([.leading, .top])
+                    
+                    //Information section starts here
+                    ScrollView(.horizontal) {
+                        VStack(alignment: .leading) {
+                            InformationSection()
+                        }.padding(.all)
+                    }
+                    //Information section ends here
+                    
                     Spacer()
-                }.padding([.leading, .top])
-                
-                //FUCK! I need to do this in another View
-                ScrollView(.horizontal) {
-                    VStack(alignment: .leading) {
-                       InformationSection()
-                        
-                        
-                    }.padding(.all)
                 }
-                
-                
-                Spacer()
             }
+            
+            //This section active after long press only
+            //Climate 'show details' snippet starts here
+            if showClimate == true {
+                VStack {
+                    Spacer()
+                    ClimateSettingsView()
+                        .animation(.spring())
+                }.edgesIgnoringSafeArea(.bottom)
+            }
+            //Climate 'show details' snippet ends here
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(cybertruckData: CybertruckData())
     }
 }
 
 struct TopSection: View {
     @Binding var showUser: Bool
+    @Binding var showClimate: Bool
+    
     
     var body: some View {
         HStack {
-            //Start Command button
+            //Command button starts here
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1)), Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .frame(width: 69, height: 69)
@@ -85,10 +107,14 @@ struct TopSection: View {
             .padding()
             .shadow(color: Color(#colorLiteral(red: 0.1215686275, green: 0.1411764706, blue: 0.1529411765, alpha: 1)), radius: 7, x: 7, y: 7)
             .shadow(color: Color(#colorLiteral(red: 0.2823529412, green: 0.3137254902, blue: 0.3411764706, alpha: 1)), radius: 7, x: -7, y: -7)
-            //End Command button
+            .onLongPressGesture {
+                self.showClimate.toggle()
+            }
+            //Command button ends here
             
             Spacer()
             
+            //Custom name of Cybertruck starts here
             VStack {
                 Text("Tesla")
                     .foregroundColor(Color.gray)
@@ -97,10 +123,11 @@ struct TopSection: View {
                     .foregroundColor(Color.white)
                     .fontWeight(.bold)
             }
+            //Custom name of Cybertruck ends here
             
             Spacer()
             
-            //Start User button
+            //User button starts here
             
             Button(action: {
                 self.showUser.toggle()
@@ -127,15 +154,16 @@ struct TopSection: View {
                 .shadow(color: Color(#colorLiteral(red: 0.1215686275, green: 0.1411764706, blue: 0.1529411765, alpha: 1)), radius: 7, x: 7, y: 7)
                 .shadow(color: Color(#colorLiteral(red: 0.2823529412, green: 0.3137254902, blue: 0.3411764706, alpha: 1)), radius: 7, x: -7, y: -7)
             }.sheet(isPresented: $showUser) {
-                SettingsView()
+                UserProfileView()
             }
-
-            //End User button
+            //User button ends here
         }
     }
 }
 
 struct StatusSection: View {
+    let cybertruckData: CybertruckData
+    
     var body: some View {
         VStack {
             HStack {
@@ -156,7 +184,7 @@ struct StatusSection: View {
                     VStack(alignment: .leading) {
                         Text("Battery")
                             .foregroundColor(.gray)
-                        Text("54%")
+                        Text("\(cybertruckData.chargePercent)%")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                     }
@@ -169,7 +197,7 @@ struct StatusSection: View {
                     VStack(alignment: .leading) {
                         Text("Range")
                             .foregroundColor(.gray)
-                        Text("297 km")
+                        Text("\(cybertruckData.range) km")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                     }
@@ -182,7 +210,7 @@ struct StatusSection: View {
                     VStack(alignment: .leading) {
                         Text("Temperture")
                             .foregroundColor(.gray)
-                        Text("27°C")
+                        Text("\(cybertruckData.temperature)°C")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                     }
