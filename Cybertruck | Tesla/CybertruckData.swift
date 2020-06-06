@@ -9,15 +9,25 @@
 import Foundation
 
 
-
-struct CybertruckData: Hashable, Codable {
+class CybertruckData: ObservableObject {
+    @Published var chargePercent = 51
+    @Published var customCarName = "Cybertruck"
+    @Published var range = 297
+    @Published var temperature: Int = 22
+    @Published var climateToggle = false
+    @Published var engineToggle = false
+    @Published var tiresPressure = false
     
-    var chargePercent = 92
-    var customCarName = ""
-    var range = 298
-    var temperature = 27
-    var climateToggle = false
-    var engineToggle = false
-    var tiresPressure = false
+    
+    func climateChangeToggle() {
+        climateToggle.toggle()
+    }
+    
+    func setDistance() -> Int {
+        self.range
+    }
+    
+    func setCarName() {
+        self.customCarName = ""
+    }
 }
-

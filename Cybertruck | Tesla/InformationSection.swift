@@ -9,17 +9,13 @@
 import SwiftUI
 
 struct InformationSection: View {
-    @State var engine = false
-    @State var climate = false
-    @State var tires = false
-    
     var body: some View {
         HStack(spacing: 10) {
-            PowerEngineButton(engine: $engine)
+            PowerEngineButton()
             
-            ClimateButton(climate: $climate)
+            ClimateButton()
             
-            TiresButton(tires: $tires)
+            TiresButton()
         }
     }
 }
@@ -30,26 +26,26 @@ struct InformationSection_Previews: PreviewProvider {
     }
 }
 
-
+//SQUERE BUTTONS
 struct PowerEngineButton: View {
-    @Binding var engine: Bool
+    @ObservedObject var data = CybertruckData()
     
     var body: some View {
         Button(action: {
-            self.engine.toggle()
+            self.data.engineToggle.toggle()
         }) {
             ZStack {
                 
                 LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1628728348, green: 0.178205691, blue: 0.1978395293, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .frame(width: 150, height: 150)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .shadow(color: engine == false ? Color(#colorLiteral(red: 0.07670026277, green: 0.09023468978, blue: 0.07500346246, alpha: 1)): Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), radius: 4, x: 0, y: 0)
+                    .shadow(color: data.engineToggle == false ? Color(#colorLiteral(red: 0.07670026277, green: 0.09023468978, blue: 0.07500346246, alpha: 1)): Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), radius: 4, x: 0, y: 0)
                 
                 Image(systemName: "power")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 30, height: 30)
-                    .foregroundColor(engine == false ? .gray : Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)))
+                    .foregroundColor(data.engineToggle == false ? .gray : Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)))
                 
                 VStack {
                     
@@ -60,7 +56,7 @@ struct PowerEngineButton: View {
                             Text("Engine")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                            if engine == false {
+                            if data.engineToggle == false {
                                 Text("Sleeping Mode")
                                     .lineLimit(1)
                                     .foregroundColor(.gray)
@@ -81,24 +77,24 @@ struct PowerEngineButton: View {
 }
 
 struct ClimateButton: View {
-    @Binding var climate: Bool
+    @ObservedObject var data = CybertruckData()
     
     var body: some View {
         Button(action: {
-            self.climate.toggle()
+            self.data.climateChangeToggle()
         }) {
             ZStack {
                 
                 LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1628728348, green: 0.178205691, blue: 0.1978395293, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .frame(width: 150, height: 150)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .shadow(color: climate == false ? Color(#colorLiteral(red: 0.07670026277, green: 0.09023468978, blue: 0.07500346246, alpha: 1)): Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), radius: 4, x: 0, y: 0)
+                    .shadow(color: data.climateToggle == false ? Color(#colorLiteral(red: 0.07670026277, green: 0.09023468978, blue: 0.07500346246, alpha: 1)): Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), radius: 4, x: 0, y: 0)
                 
                 Image(systemName: "sun.max.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 30, height: 30)
-                    .foregroundColor(climate == false ? .gray : Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)))
+                    .foregroundColor(data.climateToggle == false ? .gray : Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)))
                 
                 VStack {
                     
@@ -109,7 +105,7 @@ struct ClimateButton: View {
                             Text("Climate")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                            if climate == false {
+                            if data.climateToggle == false {
                                 Text("A/C is OFF")
                                     .lineLimit(1)
                                     .foregroundColor(.gray)
@@ -130,24 +126,24 @@ struct ClimateButton: View {
 }
 
 struct TiresButton: View {
-    @Binding var tires: Bool
+    @ObservedObject var data = CybertruckData()
     
     var body: some View {
         Button(action: {
-            self.tires.toggle()
+            self.data.tiresPressure.toggle()
         }) {
             ZStack {
                 
                 LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1628728348, green: 0.178205691, blue: 0.1978395293, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .frame(width: 150, height: 150)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .shadow(color: tires == false ? Color(#colorLiteral(red: 0.07670026277, green: 0.09023468978, blue: 0.07500346246, alpha: 1)): Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), radius: 4, x: 0, y: 0)
+                    .shadow(color: data.tiresPressure == false ? Color(#colorLiteral(red: 0.07670026277, green: 0.09023468978, blue: 0.07500346246, alpha: 1)): Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)), radius: 4, x: 0, y: 0)
                 
-                Image(systemName: tires == false ? "arrowtriangle.down.circle" : "arrowtriangle.up.circle")
+                Image(systemName: data.tiresPressure == false ? "arrowtriangle.down.circle" : "arrowtriangle.up.circle")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 30, height: 30)
-                    .foregroundColor(tires == false ? .gray : Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)))
+                    .foregroundColor(data.tiresPressure == false ? .gray : Color(#colorLiteral(red: 0.06666666667, green: 0.6588235294, blue: 0.9921568627, alpha: 1)))
                 
                 VStack {
                     
@@ -158,7 +154,7 @@ struct TiresButton: View {
                             Text("Tires")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                            if tires == false {
+                            if data.tiresPressure == false {
                                 Text("Low Pressure")
                                     .lineLimit(1)
                                     .foregroundColor(.gray)

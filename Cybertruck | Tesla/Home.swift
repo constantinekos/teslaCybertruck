@@ -10,37 +10,39 @@ import SwiftUI
 
 struct Home: View {
     @State private var showMainView = false
-    @State private var showSettings = false
+    @State private var showUserProfile = false
     
+    @ObservedObject var data = CybertruckData()
     var body: some View {
         
         ZStack {
             if showMainView {
-                MainView(cybertruckData: CybertruckData())
+                withAnimation {
+                MainView()
+                }.animation(.interactiveSpring())
             } else {
                 LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    SettingsButton(showSettings: $showSettings)
+                    UserButton(showUserProfile: $showUserProfile)
                     
-                    CarInfoSection(cybertruckData: CybertruckData())
+                    CarInfoSection()
                     
                     Spacer()
                     
                     OpenCarSection(showMainView: $showMainView)
                     
                 }
-                //GeometryReader { g in
-                    HStack {
-                        Spacer()
-                        Image("teslaCybertruckCutted")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 220)
-                            .offset(y: 60)
-                    }
-                //}
+                
+                HStack {
+                    Spacer()
+                    Image("teslaCybertruckCutted")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: UIScreen.main.bounds.width - 20)
+                        .offset(y: 60)
+                }
             }
         }
     }
@@ -52,8 +54,8 @@ struct Home_Previews: PreviewProvider {
     }
 }
 
-struct SettingsButton: View {
-    @Binding var showSettings : Bool
+struct UserButton: View {
+    @Binding var showUserProfile: Bool
     
     var body: some View {
         HStack {
@@ -61,19 +63,12 @@ struct SettingsButton: View {
             
             //Settings button starts here
             Button(action: {
-                self.showSettings.toggle()
+                self.showUserProfile.toggle()
             }) {
                 ZStack {
-                    LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1)), Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                        .frame(width: 69, height: 69)
-                        .clipShape(Circle())
-                        .blur(radius: 8)
+                    CircleButtonsShape()
                     
-                    LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2078431373, green: 0.2274509804, blue: 0.2509803922, alpha: 1)), Color(#colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.1058823529, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                        .frame(width: 63, height: 63)
-                        .clipShape(Circle())
-                    
-                    Image(systemName: "gear")
+                    Image(systemName: "person")
                         .resizable()
                         .frame(width: 26, height: 26)
                         .foregroundColor(Color(#colorLiteral(red: 0.4980392157, green: 0.5176470588, blue: 0.537254902, alpha: 1)))
@@ -82,17 +77,16 @@ struct SettingsButton: View {
                 .clipShape(Circle())
                 .frame(width: 63, height: 63)
             }
-            .sheet(isPresented: $showSettings) {
-                SettingsView()
+            .sheet(isPresented: $showUserProfile) {
+                UserProfileView()
             }
         }.padding()
-            .shadow(color: Color(#colorLiteral(red: 0.1215686275, green: 0.1411764706, blue: 0.1529411765, alpha: 1)), radius: 7, x: 7, y: 7)
-            .shadow(color: Color(#colorLiteral(red: 0.2823529412, green: 0.3137254902, blue: 0.3411764706, alpha: 1)), radius: 7, x: -7, y: -7)
+            .modifier(Shadows())
     }
 }
 
 struct CarInfoSection: View {
-    let cybertruckData: CybertruckData
+    @ObservedObject var data = CybertruckData()
     
     var body: some View {
         VStack {
@@ -100,13 +94,13 @@ struct CarInfoSection: View {
                 .foregroundColor(Color(#colorLiteral(red: 0.4980392157, green: 0.5176470588, blue: 0.537254902, alpha: 1)))
             
             //Custom car name
-            Text("Cybertruck")
+            Text(data.customCarName)
                 .font(.custom("Gilroy-Bold", size: 44))
                 .foregroundColor(.white)
             
             //Distance/range
             HStack(alignment: .top, spacing: 10) {
-                Text("\(cybertruckData.range)")
+                Text("\(data.range)")
                     .font(.custom("Gilroy-UltraLight", size: 190))
                 
                 Text("km")
@@ -151,7 +145,7 @@ struct OpenCarSection: View {
                 .shadow(color: Color(#colorLiteral(red: 0.1843137255, green: 0.2235294118, blue: 0.2392156863, alpha: 1)), radius: 10, x: -10, y: -10)
             }
             //Unlock button ends here
-
+            
             Text("Tap to open the car")
                 .foregroundColor(Color.white)
         }

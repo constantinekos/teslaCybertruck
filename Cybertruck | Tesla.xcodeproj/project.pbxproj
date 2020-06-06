@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E5817D7DAFD6855CE7A1889 /* Pods_Cybertruck___Tesla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E89FB17F1919EC95C71ACE8 /* Pods_Cybertruck___Tesla.framework */; };
+		6C1A229E248BA5E900FAD76D /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A229D248BA5E900FAD76D /* Modifiers.swift */; };
 		6C1A26C224255940009F92D3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A26C124255940009F92D3 /* SettingsView.swift */; };
 		6C1A26C424255FCE009F92D3 /* InformationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A26C324255FCE009F92D3 /* InformationSection.swift */; };
 		6C61FBDE240EF32A00F59D23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C61FBDD240EF32A00F59D23 /* AppDelegate.swift */; };
@@ -38,11 +40,13 @@
 		6C97C1E6240FFF30004B39C9 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C97C1D2240FFF30004B39C9 /* Gilroy-Bold.ttf */; };
 		6C97C1E7240FFF30004B39C9 /* Gilroy-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C97C1D3240FFF30004B39C9 /* Gilroy-HeavyItalic.ttf */; };
 		6C97C1E924100998004B39C9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C97C1E824100998004B39C9 /* MainView.swift */; };
+		6CB75F84245E06E200F9E15F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CB75F83245E06E200F9E15F /* GoogleService-Info.plist */; };
 		6CF9FD7C2442270A001BC95D /* CybertruckData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF9FD7B2442270A001BC95D /* CybertruckData.swift */; };
-		6CF9FD7E24424834001BC95D /* VisualElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF9FD7D24424834001BC95D /* VisualElements.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		528226CC687CEDB17945330D /* Pods-Cybertruck | Tesla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cybertruck | Tesla.release.xcconfig"; path = "Target Support Files/Pods-Cybertruck | Tesla/Pods-Cybertruck | Tesla.release.xcconfig"; sourceTree = "<group>"; };
+		6C1A229D248BA5E900FAD76D /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		6C1A26C124255940009F92D3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6C1A26C324255FCE009F92D3 /* InformationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSection.swift; sourceTree = "<group>"; };
 		6C61FBDA240EF32A00F59D23 /* Cybertruck | Tesla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cybertruck | Tesla.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,8 +80,10 @@
 		6C97C1D2240FFF30004B39C9 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		6C97C1D3240FFF30004B39C9 /* Gilroy-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-HeavyItalic.ttf"; sourceTree = "<group>"; };
 		6C97C1E824100998004B39C9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6CB75F83245E06E200F9E15F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CF9FD7B2442270A001BC95D /* CybertruckData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CybertruckData.swift; sourceTree = "<group>"; };
-		6CF9FD7D24424834001BC95D /* VisualElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualElements.swift; sourceTree = "<group>"; };
+		7E89FB17F1919EC95C71ACE8 /* Pods_Cybertruck___Tesla.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Cybertruck___Tesla.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C577CA6B8A766956D1A7342B /* Pods-Cybertruck | Tesla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cybertruck | Tesla.debug.xcconfig"; path = "Target Support Files/Pods-Cybertruck | Tesla/Pods-Cybertruck | Tesla.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,17 +91,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E5817D7DAFD6855CE7A1889 /* Pods_Cybertruck___Tesla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24C79A91F0970ABF1F63CD54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E89FB17F1919EC95C71ACE8 /* Pods_Cybertruck___Tesla.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6C61FBD1240EF32900F59D23 = {
 			isa = PBXGroup;
 			children = (
 				6C61FBDC240EF32A00F59D23 /* Cybertruck | Tesla */,
 				6C61FBDB240EF32A00F59D23 /* Products */,
+				76FE1B4D949A1F89AB3C69EC /* Pods */,
+				24C79A91F0970ABF1F63CD54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,9 +136,10 @@
 				6C92A497243E58C4006CD525 /* UserProfileView.swift */,
 				6C92A499243E5A37006CD525 /* ClimateSettingsView.swift */,
 				6CF9FD7B2442270A001BC95D /* CybertruckData.swift */,
-				6CF9FD7D24424834001BC95D /* VisualElements.swift */,
+				6C1A229D248BA5E900FAD76D /* Modifiers.swift */,
 				6C61FBE3240EF32C00F59D23 /* Assets.xcassets */,
 				6C61FBE8240EF32C00F59D23 /* LaunchScreen.storyboard */,
+				6CB75F83245E06E200F9E15F /* GoogleService-Info.plist */,
 				6C61FBEB240EF32C00F59D23 /* Info.plist */,
 				6C97C1BF240FFF16004B39C9 /* Fonts */,
 				6C61FBE5240EF32C00F59D23 /* Preview Content */,
@@ -164,6 +182,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		76FE1B4D949A1F89AB3C69EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C577CA6B8A766956D1A7342B /* Pods-Cybertruck | Tesla.debug.xcconfig */,
+				528226CC687CEDB17945330D /* Pods-Cybertruck | Tesla.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,9 +198,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C61FBEE240EF32C00F59D23 /* Build configuration list for PBXNativeTarget "Cybertruck | Tesla" */;
 			buildPhases = (
+				D0B1ADFFBC53E8C842004A94 /* [CP] Check Pods Manifest.lock */,
 				6C61FBD6240EF32A00F59D23 /* Sources */,
 				6C61FBD7240EF32A00F59D23 /* Frameworks */,
 				6C61FBD8240EF32A00F59D23 /* Resources */,
+				F90AF566BFCBDC6749375852 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +268,7 @@
 				6C97C1E3240FFF30004B39C9 /* Gilroy-UltraLightItalic.ttf in Resources */,
 				6C97C1D8240FFF30004B39C9 /* Gilroy-ExtraBoldItalic.ttf in Resources */,
 				6C97C1E0240FFF30004B39C9 /* Gilroy-Black.ttf in Resources */,
+				6CB75F84245E06E200F9E15F /* GoogleService-Info.plist in Resources */,
 				6C97C1D5240FFF30004B39C9 /* Gilroy-RegularItalic.ttf in Resources */,
 				6C97C1D4240FFF30004B39C9 /* Gilroy-Light.ttf in Resources */,
 				6C97C1DC240FFF30004B39C9 /* Gilroy-SemiBold.ttf in Resources */,
@@ -250,6 +280,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D0B1ADFFBC53E8C842004A94 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cybertruck | Tesla-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F90AF566BFCBDC6749375852 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cybertruck | Tesla/Pods-Cybertruck | Tesla-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cybertruck | Tesla/Pods-Cybertruck | Tesla-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cybertruck | Tesla/Pods-Cybertruck | Tesla-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6C61FBD6240EF32A00F59D23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -257,9 +329,9 @@
 			files = (
 				6C92A498243E58C4006CD525 /* UserProfileView.swift in Sources */,
 				6C1A26C224255940009F92D3 /* SettingsView.swift in Sources */,
-				6CF9FD7E24424834001BC95D /* VisualElements.swift in Sources */,
 				6C61FBDE240EF32A00F59D23 /* AppDelegate.swift in Sources */,
 				6C97C1E924100998004B39C9 /* MainView.swift in Sources */,
+				6C1A229E248BA5E900FAD76D /* Modifiers.swift in Sources */,
 				6C61FBE0240EF32A00F59D23 /* SceneDelegate.swift in Sources */,
 				6C1A26C424255FCE009F92D3 /* InformationSection.swift in Sources */,
 				6C61FBE2240EF32A00F59D23 /* Home.swift in Sources */,
@@ -398,6 +470,7 @@
 		};
 		6C61FBEF240EF32C00F59D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C577CA6B8A766956D1A7342B /* Pods-Cybertruck | Tesla.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -410,7 +483,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.constantinekos.Cybertruck---Tesla";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Cybertruck | Tesla";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +491,7 @@
 		};
 		6C61FBF0240EF32C00F59D23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 528226CC687CEDB17945330D /* Pods-Cybertruck | Tesla.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -430,7 +504,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.constantinekos.Cybertruck---Tesla";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Cybertruck | Tesla";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
